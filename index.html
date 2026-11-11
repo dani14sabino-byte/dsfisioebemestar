@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>DS Fisioterapia e Bem-Estar</title>
+<meta name="description" content="Daniele Sabino, fisioterapeuta em Limeira. Terapias manuais, drenagem linfática, massagem modeladora e reabilitação com atendimento domiciliar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;500;600&family=Pinyon+Script&display=swap">
+<style>body{margin:0;padding:0}img{max-width:100%}</style>
+<style>
+/* Layout: faixa de abertura com a borboleta, depois seções em coluna única de leitura, com uma faixa escura de "como funciona" no meio */
+:root{
+  --bg:#fbf6f6;
+  --surface:#f3e7e9;
+  --ink:#3a2a33;
+  --muted:#7a6670;
+  --rose:#b07686;
+  --plum:#5c3a4f;
+  --line:#e6d4d8;
+  --on-plum:#fbf1f3;
+  --f-display:"Marcellus", "Cormorant Garamond", Georgia, serif;
+  --f-body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-script:"Pinyon Script", "Brush Script MT", cursive;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1e1619; --surface:#2a1f24; --ink:#f1e4e8; --muted:#bfa9b2;
+    --rose:#d79cad; --plum:#3d2633; --line:#3f2f37; --on-plum:#f6e8ec;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1e1619; --surface:#2a1f24; --ink:#f1e4e8; --muted:#bfa9b2;
+  --rose:#d79cad; --plum:#3d2633; --line:#3f2f37; --on-plum:#f6e8ec;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.65}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:4px}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);font-weight:600}
+
+/* topo */
+header.top{border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:34px;height:34px;flex:none}
+.brand span{font-family:var(--f-display);font-size:1.15rem;letter-spacing:.02em}
+.brand em{font-family:var(--f-script);font-style:normal;color:var(--rose);font-size:1.35rem;margin-left:2px}
+nav.links{display:flex;gap:22px;font-size:.92rem}
+nav.links a{text-decoration:none;color:var(--muted)}
+nav.links a:hover{color:var(--ink)}
+@media (max-width:760px){nav.links{display:none}}
+
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--plum);color:var(--on-plum);text-decoration:none;padding:13px 22px;border-radius:999px;font-weight:600;font-size:.98rem;transition:transform .2s ease, background .2s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn svg{width:18px;height:18px}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.small{padding:9px 16px;font-size:.88rem}
+
+/* abertura */
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding-block:72px 64px}
+.hero h1{font-size:clamp(2.4rem,5.6vw,4rem)}
+.hero h1 .script{display:block;font-family:var(--f-script);color:var(--rose);font-size:1.15em;line-height:1;margin-top:6px}
+.hero p.lead{margin-top:22px;font-size:1.12rem;color:var(--muted);max-width:52ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:30px;font-size:.9rem;color:var(--muted)}
+.hero .meta b{color:var(--ink);font-weight:600}
+.emblem{position:relative;max-width:100%}
+.emblem .photo{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:60% 50%;border-radius:999px 999px 18px 18px}
+.emblem .badge{position:absolute;left:-18px;bottom:28px;width:92px;height:92px;border-radius:50%;background:var(--bg);border:1px solid var(--line);display:grid;place-items:center;box-shadow:0 10px 30px rgba(92,58,79,.15)}
+.emblem .badge svg{width:58px;height:auto}
+.emblem .wing{transform-origin:50% 55%;animation:flutter 6s ease-in-out infinite}
+@keyframes flutter{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.9)}}
+@media (prefers-reduced-motion:reduce){.emblem .wing{animation:none}}
+@media (max-width:760px){
+  .hero .wrap{grid-template-columns:1fr;padding-block:44px 40px;gap:28px}
+  .emblem{max-width:360px;width:100%;margin:0 auto;order:-1}
+  .emblem .photo{aspect-ratio:1/1}
+  .emblem .badge{left:8px;bottom:-14px;width:76px;height:76px}
+}
+
+section{padding-block:72px}
+section .head{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;max-width:60ch}
+section h2{font-size:clamp(1.8rem,3.6vw,2.5rem)}
+section .head p{color:var(--muted)}
+
+/* serviços */
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.subhead{display:flex;align-items:baseline;gap:14px;margin:0 0 18px}
+.subhead h3{font-size:1.15rem;color:var(--plum)}
+.subhead::after{content:"";flex:1;height:1px;background:var(--line)}
+.group+.group{margin-top:56px}
+.svc.wide{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);grid-template-rows:none}
+.svc.wide img{height:100%;aspect-ratio:auto;min-height:220px}
+.svc.wide .body{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:28px 32px}
+@media (max-width:900px){.services{grid-template-columns:repeat(2,minmax(0,1fr))} .services .svc:last-child:nth-child(odd){grid-column:1/-1}}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .subhead h3{color:var(--rose)}}
+:root[data-theme="dark"] .subhead h3{color:var(--rose)}
+.svc{display:grid;grid-template-rows:auto 1fr;background:var(--surface);border-radius:18px;overflow:hidden}
+.svc img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform .6s ease}
+.svc:hover img{transform:scale(1.03)}
+.svc-img{display:block;overflow:hidden}
+.svc.wide .svc-img img{height:100%}
+.svc-title{text-decoration:none}
+.svc-title:hover{color:var(--plum)}
+.svc-wa{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);text-decoration:none;font-weight:600;font-size:.9rem;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.svc-wa svg{width:17px;height:17px;color:#25a366}
+.svc-wa:hover{background:var(--plum);border-color:var(--plum);color:var(--on-plum)}
+.svc-wa:hover svg{color:var(--on-plum)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .svc-title:hover{color:var(--rose)}}
+:root[data-theme="dark"] .svc-title:hover{color:var(--rose)}
+.svc .body{padding:22px 24px 26px}
+.svc h3{font-size:1.4rem;margin-bottom:6px}
+.svc p{color:var(--muted);font-size:.98rem}
+@media (prefers-reduced-motion:reduce){.svc img{transition:none}}
+@media (max-width:760px){.services{grid-template-columns:1fr;gap:20px} .svc.wide{grid-template-columns:1fr} .svc.wide img{aspect-ratio:16/10;min-height:0}}
+
+.signs-sec{padding-block:56px;background:var(--surface)}
+.signs-sec .signs span{background:var(--bg);border:1px solid var(--line)}
+.signs-cta{margin-top:22px;color:var(--muted)}
+.signs-cta a{color:var(--plum);font-weight:600;text-underline-offset:3px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .signs-cta a{color:var(--rose)}}
+:root[data-theme="dark"] .signs-cta a{color:var(--rose)}
+
+/* domiciliar */
+.home{background:var(--plum);color:var(--on-plum)}
+.home .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+.home .eyebrow{color:var(--on-plum);opacity:.75}
+.home h2{margin-top:10px}
+.home .intro p{margin-top:18px;opacity:.85;max-width:46ch}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:22px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;counter-increment:s}
+.steps li::before{content:counter(s);font-family:var(--f-display);font-size:1.1rem;width:36px;height:36px;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;opacity:.8}
+.steps b{display:block;font-weight:600;margin-bottom:2px}
+.steps span{opacity:.82;font-size:.96rem}
+@media (max-width:760px){.home .wrap{grid-template-columns:1fr;gap:32px}}
+
+/* sobre */
+.about .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.about blockquote{margin:0;font-family:var(--f-display);font-size:clamp(1.5rem,3vw,2rem);line-height:1.3;color:var(--ink)}
+.about blockquote::before{content:"";display:block;width:48px;height:1px;background:var(--rose);margin-bottom:22px}
+.about .portrait{display:block;width:300px;height:300px;object-fit:cover;object-position:50% 22%;border-radius:50%;border:3px solid var(--bg);box-shadow:0 0 0 1px var(--line),0 8px 20px rgba(92,58,79,.12);margin-bottom:24px}
+@media (max-width:760px){.about .portrait{width:240px;height:240px}}
+.about .sig{font-family:var(--f-script);font-size:2rem;color:var(--rose);margin-top:18px}
+.about .text p+p{margin-top:14px}
+.about .text p{color:var(--muted)}
+.creds{margin-top:28px;display:grid;gap:0;border-top:1px solid var(--line)}
+.creds div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.creds div span:last-child{color:var(--muted);text-align:right}
+@media (max-width:760px){.about .wrap{grid-template-columns:1fr;gap:28px}}
+
+/* para quem */
+.signs{display:flex;flex-wrap:wrap;gap:10px}
+.signs span{background:var(--surface);border-radius:999px;padding:9px 16px;font-size:.95rem}
+
+/* contato */
+.contact{background:var(--surface)}
+.contact .card{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:center}
+.contact h2{font-size:clamp(2rem,4vw,2.8rem)}
+.contact p.sub{color:var(--muted);margin-top:12px;max-width:44ch}
+.contact .box{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:26px;display:grid;gap:16px}
+.contact .row{display:grid;gap:2px}
+.contact .row small{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.contact .row b{font-weight:500;font-size:1.05rem;user-select:all}
+@media (max-width:760px){.contact .card{grid-template-columns:1fr}}
+
+footer{padding-block:28px;font-size:.85rem;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+.float{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:50%;background:#25a366;color:#fff;display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.18);z-index:5}
+.float svg{width:28px;height:28px}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></symbol>
+    <symbol id="fly" viewBox="0 0 120 100">
+      <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60 30c-6-16-24-26-40-22C6 12 6 34 20 44c8 6 22 8 40 4"/>
+        <path d="M60 30c6-16 24-26 40-22 14 4 14 26 0 36-8 6-22 8-40 4"/>
+        <path d="M60 50c-10 2-26 8-30 22-3 12 10 18 20 10 6-5 10-16 10-26"/>
+        <path d="M60 50c10 2 26 8 30 22 3 12-10 18-20 10-6-5-10-16-10-26"/>
+        <path d="M60 26v54"/><path d="M60 26c-2-8-6-14-12-18M60 26c2-8 6-14 12-18"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="DS Fisioterapia e Bem-Estar">
+      <svg style="color:var(--rose)"><use href="#fly"/></svg>
+      <span>DS <em>Fisioterapia</em></span>
+    </a>
+    <nav class="links" aria-label="Seções">
+      <a href="#servicos">Massagens</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#sobre">Sobre mim</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn small" href="https://wa.me/5519971528198?text=Ol%C3%A1%20Daniele!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." target="_blank" rel="noopener">Agendar</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero" style="padding-block:0">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Massagens &amp; fisioterapia em domicílio · Limeira</p>
+        <h1>Seu corpo pede cuidado. <span class="script">Eu levo até você.</span></h1>
+        <p class="lead">Sou a Daniele Sabino, fisioterapeuta há 11 anos. Levo até a sua casa drenagem linfática, massagem modeladora e terapias manuais para aliviar tensões, além de fisioterapia para reabilitação, sempre com um plano pensado para você.</p>
+        <div class="ctas">
+          <a class="btn" href="https://wa.me/5519971528198?text=Ol%C3%A1%20Daniele!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Agendar pelo WhatsApp</a>
+          <a class="btn ghost" href="#servicos">Ver massagens</a>
+        </div>
+        <div class="meta">
+          <span><b>Massagens</b> com olhar de fisioterapeuta</span>
+          <span><b>11 anos</b> de experiência</span>
+          <span><b>Atendimento</b> em domicílio</span>
+          <span><b>Limeira</b> e região</span>
+        </div>
+      </div>
+      <div class="emblem">
+        <img class="photo" src="img/hero.jpg" alt="Mãos de fisioterapeuta massageando o ombro e as costas de uma paciente" width="1100" height="733">
+        <div class="badge" aria-hidden="true"><svg viewBox="0 0 120 100" style="color:var(--rose)"><g class="wing"><use href="#fly"/></g></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="signs-sec" id="para-quem">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:24px">
+        <p class="eyebrow">Para quem é</p>
+        <h2>Talvez seja hora de cuidar de você se…</h2>
+      </div>
+      <div class="signs">
+        <span>As costas e o pescoço vivem tensos</span>
+        <span>As pernas incham no fim do dia</span>
+        <span>Quer um momento só seu de bem-estar</span>
+        <span>Passa muitas horas sentada ou em pé</span>
+        <span>Você está se recuperando de uma lesão ou cirurgia</span>
+        <span>Um familiar idoso perdeu mobilidade</span>
+      </div>
+      <p class="signs-cta">Se você se reconheceu em algum desses, uma sessão pode fazer diferença. <a href="#servicos">Veja as massagens</a></p>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Atendimentos</p>
+        <h2>Massagens feitas por quem entende do corpo</h2>
+        <p>Cada sessão começa com uma conversa sobre o que você sente e o que quer alcançar. Como fisioterapeuta, eu escolho a técnica e a pressão certas para o seu momento.</p>
+      </div>
+      <div class="group">
+        <div class="subhead"><h3>Massagens</h3></div>
+        <div class="services">
+          <article class="svc">
+            <a href="https://wa.me/5519971528198?text=Ol%C3%A1%21%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Drenagem%20linf%C3%A1tica" target="_blank" rel="noopener" class="svc-img" aria-label="Saber mais sobre Drenagem linfática pelo WhatsApp"><img src="img/drenagem.jpg" alt="Mãos fazendo drenagem linfática na perna sobre uma toalha branca" loading="lazy" width="900" height="600"></a>
+            <div class="body"><h3><a href="https://wa.me/5519971528198?text=Ol%C3%A1%21%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Drenagem%20linf%C3%A1tica" target="_blank" rel="noopener" class="svc-title">Drenagem linfática</a></h3><p>Movimentos suaves e ritmados que ajudam a reduzir inchaço e retenção de líquidos, com sensação de leveza.</p><a href="https://wa.me/5519971528198?text=Ol%C3%A1%21%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Drenagem%20linf%C3%A1tica" target="_blank" rel="noopener" class="svc-wa"><svg><use href="#wa"/></svg>Saber mais pelo WhatsApp</a></div>
+          </article>
+          <article class="svc">
+            <a href="https://wa.me/5519971528198?text=Ol%C3%A1%21%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Massagem%20modeladora" target="_blank" rel="noopener" class="svc-img" aria-label="Saber mais sobre Massagem modeladora pelo WhatsApp"><img src="img/modeladora.jpg" alt="Mãos fazendo massagem firme nas costas" loading="lazy" width="900" height="600"></a>
+            <div class="body"><h3><a href="https://wa.me/5519971528198?text=Ol%C3%A1%21%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Massagem%20modeladora" target="_blank" rel="noopener" class="svc-title">Massagem modeladora</a></h3><p>Manobras mais firmes que trabalham contorno corporal e ativam a circulação, como parte de uma rotina de cuidado.</p><a href="https://wa.me/5519971528198?text=Ol%C3%A1%21%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Massagem%20modeladora" target="_blank" rel="noopener" class="svc-wa"><svg><use href="#wa"/></svg>Saber mais pelo WhatsApp</a></div>
+          </article>
+          <article class="svc">
+            <a href="https://wa.me/5519971528198?text=Ol%C3%A1%21%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Terapias%20manuais" target="_blank" rel="noopener" class="svc-img" aria-label="Saber mais sobre Terapias manuais pelo WhatsApp"><img src="img/terapias-manuais.jpg" alt="Mãos de fisioterapeuta massageando o ombro de uma paciente" loading="lazy" width="900" height="600"></a>
+            <div class="body"><h3><a href="https://wa.me/5519971528198?text=Ol%C3%A1%21%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Terapias%20manuais" target="_blank" rel="noopener" class="svc-title">Terapias manuais</a></h3><p>Massagem e alongamento para soltar tensões, dores musculares e aquela rigidez de pescoço e costas que acompanha o dia a dia.</p><a href="https://wa.me/5519971528198?text=Ol%C3%A1%21%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Terapias%20manuais" target="_blank" rel="noopener" class="svc-wa"><svg><use href="#wa"/></svg>Saber mais pelo WhatsApp</a></div>
+          </article>
+        </div>
+      </div>
+      <div class="group">
+        <div class="subhead"><h3>Fisioterapia</h3></div>
+        <article class="svc wide">
+          <a href="https://wa.me/5519971528198?text=Ol%C3%A1%21%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Reabilita%C3%A7%C3%A3o%20em%20domic%C3%ADlio" target="_blank" rel="noopener" class="svc-img" aria-label="Saber mais sobre Reabilitação em domicílio pelo WhatsApp"><img src="img/reabilitacao.jpg" alt="Mãos da fisioterapeuta trabalhando a mão de um paciente em casa" loading="lazy" width="900" height="600"></a>
+          <div class="body"><h3><a href="https://wa.me/5519971528198?text=Ol%C3%A1%21%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Reabilita%C3%A7%C3%A3o%20em%20domic%C3%ADlio" target="_blank" rel="noopener" class="svc-title">Reabilitação em domicílio</a></h3><p>Fisioterapia para recuperar movimento, força e autonomia após lesões, cirurgias ou períodos de pouca mobilidade, inclusive para idosos.</p><a href="https://wa.me/5519971528198?text=Ol%C3%A1%21%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20Reabilita%C3%A7%C3%A3o%20em%20domic%C3%ADlio" target="_blank" rel="noopener" class="svc-wa"><svg><use href="#wa"/></svg>Saber mais pelo WhatsApp</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="home" id="como-funciona">
+    <div class="wrap">
+      <div class="intro">
+        <p class="eyebrow">Atendimento domiciliar</p>
+        <h2>A sessão acontece no conforto da sua casa</h2>
+        <p>Sem trânsito, sem sala de espera. Você recebe o cuidado no seu espaço, no seu horário, e eu adapto o atendimento à sua rotina.</p>
+      </div>
+      <ol class="steps">
+        <li><div><b>Você me chama no WhatsApp</b><span>Conta o que está sentindo ou qual atendimento procura.</span></div></li>
+        <li><div><b>Combinamos dia e horário</b><span>Escolhemos juntos o melhor momento para a sessão.</span></div></li>
+        <li><div><b>Fechamos o melhor pacote para você</b><span>Montamos juntos o número de sessões que faz sentido para o seu objetivo.</span></div></li>
+        <li><div><b>Eu vou até você</b><span>Avalio, converso e conduzo o atendimento no seu ritmo.</span></div></li>
+        <li><div><b>Acompanhamos a evolução</b><span>Ajustamos o plano conforme o seu corpo responde.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="about" id="sobre">
+    <div class="wrap">
+      <div>
+        <img class="portrait" src="img/daniele.jpg" alt="Daniele Sabino, fisioterapeuta, sorrindo de jaleco branco em um jardim" width="900" height="1200" loading="lazy">
+        <p class="eyebrow">Sobre mim</p>
+        <blockquote style="margin-top:14px">Cuidar também é movimento. Mais que tratamento, é sobre pessoas.</blockquote>
+        <p class="sig">Daniele Sabino</p>
+      </div>
+      <div class="text">
+        <p>Sou fisioterapeuta há 11 anos, apaixonada pelo cuidado e pelo movimento. Acredito em estar presente e olhar cada pessoa de forma individualizada, respeitando as necessidades e os objetivos de quem eu atendo.</p>
+        <p>Uno conhecimento e experiência para oferecer um atendimento personalizado, em todas as fases da vida. Seu bem-estar é a minha prioridade. Fora do consultório, sou esposa e mãe de pets.</p>
+        <div class="creds" aria-label="Formação">
+          <div><span>Especialização</span><span>Terapias Manuais</span></div>
+          <div><span>Especialização</span><span>Home Care</span></div>
+          <div><span>Pós-graduação</span><span>Ergonomia</span></div>
+          <div><span>Pós-graduação</span><span>Cardiorrespiratória</span></div>
+          <div><span>Pós-graduação</span><span>Neonatologia</span></div>
+          <div><span>Curso</span><span>Pilates</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contato">
+    <div class="wrap">
+      <div class="card">
+        <div>
+          <p class="eyebrow">Agende sua sessão</p>
+          <h2 style="margin-top:10px">Vamos conversar sobre o que o seu corpo está pedindo?</h2>
+          <p class="sub">Me chame no WhatsApp para tirar dúvidas, saber valores e combinar o melhor horário.</p>
+          <div style="margin-top:24px"><a class="btn" href="https://wa.me/5519971528198?text=Ol%C3%A1%20Daniele!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Chamar no WhatsApp</a></div>
+        </div>
+        <div class="box">
+          <div class="row"><small>WhatsApp</small><b>(19) 97152-8198</b></div>
+          <div class="row"><small>Instagram</small><b><a href="https://www.instagram.com/dsfisioebemestar/" target="_blank" rel="noopener">@dsfisioebemestar</a></b></div>
+          <div class="row"><small>Onde atendo</small><b>Em domicílio · Limeira, SP</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 DS Fisioterapia e Bem-Estar · Daniele Sabino</span>
+    <span>Limeira, SP · Fotos ilustrativas: Unsplash</span>
+  </div>
+</footer>
+
+<a class="float" href="https://wa.me/5519971528198?text=Ol%C3%A1%20Daniele!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o." target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp"><svg><use href="#wa"/></svg></a>
+
+</body></html>
